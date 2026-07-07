@@ -100,6 +100,13 @@
             opacity: 0.7; /* Dimmed because it's coming soon */
         }
 
+        .btn-website {
+            transition: transform 0.2s;
+        }
+        .btn-website:hover {
+            transform: scale(1.05);
+        }
+
         footer {
             margin-top: auto;
             background-color: #2c3e50;
@@ -121,6 +128,13 @@
             <h1 class="display-4 fw-bold mb-2">Art Creative Production</h1>
             <h2 class="h3 fw-light">創藝製作</h2>
             <p class="lead mt-3">全面及現代化的娛樂製作專家</p>
+            
+            <!-- 加入網站按鈕 -->
+            <div class="mt-4">
+                <a href="https://www.art4u.com.hk/wordpress/" target="_blank" class="btn btn-light btn-lg rounded-pill fw-bold text-dark px-4 shadow-sm btn-website">
+                    <i class="fas fa-globe me-2"></i>瀏覽官方網站
+                </a>
+            </div>
         </div>
     </header>
 
@@ -175,8 +189,9 @@
                     <h3 class="section-title">聯絡我們</h3>
                     <p class="mb-4">如有任何查詢，歡迎隨時聯絡 Winnie 周小姐</p>
                     
+                    <!-- 將原本的 2 欄 (col-md-6) 改為 3 欄 (col-md-4)，加入網站連結 -->
                     <div class="row justify-content-center g-4 mb-4">
-                        <div class="col-md-6">
+                        <div class="col-md-4 col-sm-6">
                             <a href="tel:97580034" class="text-decoration-none text-dark">
                                 <div class="p-3 border rounded bg-light h-100">
                                     <i class="fas fa-phone-alt text-primary mb-2 fs-4"></i>
@@ -185,12 +200,21 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4 col-sm-6">
                             <a href="mailto:winnie@art4u.com.hk" class="text-decoration-none text-dark">
                                 <div class="p-3 border rounded bg-light h-100">
                                     <i class="fas fa-envelope text-primary mb-2 fs-4"></i>
-                                    <h5 class="mb-0">winnie@art4u.com.hk</h5>
-                                    <small class="text-muted">點擊發送郵件</small>
+                                    <h5 class="mb-0">電郵查詢</h5>
+                                    <small class="text-muted text-break">winnie@art4u.com.hk</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <a href="https://www.art4u.com.hk/wordpress/" target="_blank" class="text-decoration-none text-dark">
+                                <div class="p-3 border rounded bg-light h-100">
+                                    <i class="fas fa-globe text-primary mb-2 fs-4"></i>
+                                    <h5 class="mb-0">官方網站</h5>
+                                    <small class="text-muted">點擊瀏覽</small>
                                 </div>
                             </a>
                         </div>
