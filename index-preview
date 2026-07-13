@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>創藝製作 | Art Creative Production</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts: Noto Sans TC for Traditional Chinese -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #c9a96e;
+            --accent-light: #e0c78a;
+            --gold-gradient: linear-gradient(135deg, #c9a96e 0%, #e0c78a 30%, #c9a96e 60%, #b8944f 100%);
+            --dark-gradient: linear-gradient(160deg, #0f0c29 0%, #1a1a2e 30%, #16213e 70%, #0f0c29 100%);
+            --card-bg: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-muted: #6b7280;
+            --border-subtle: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
+            --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.15), 0 12px 30px rgba(0, 0, 0, 0.08);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #fafaf8;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── 自訂捲軸 ── */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c9a96e;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b8944f;
+        }
+
+        /* ── 導航欄 ── */
+        .navbar-custom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+            padding: 14px 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            background: transparent;
+        }
+        .navbar-custom.scrolled {
+            background: rgba(15, 12, 41, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 8px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-custom .navbar-brand {
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            transition: color 0.3s;
+        }
+        .navbar-custom .navbar-brand .accent-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+            box-shadow: 0 0 10px rgba(201, 169, 110, 0.7);
+        }
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+            margin: 0 6px;
+            padding: 8px 16px !important;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .navbar-custom .nav-link.btn-nav-cta {
+            background: var(--gold-gradient);
+            color: #1a1a2e !important;
+            font-weight: 700;
+            padding: 10px 22px !important;
+            margin-left: 8px;
+            box-shadow: 0 4px 18px rgba(201, 169, 110, 0.4);
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+        }
+        .navbar-custom .nav-link.btn-nav-cta:hover {
+            box-shadow: 0 8px 28px rgba(201, 169, 110, 0.6);
+            transform: translateY(-2px);
+        }
+        .navbar-toggler {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 6px 10px;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ── Hero Section ── */
+        .hero-section {
+            position: relative;
+            background: var(--dark-gradient);
+            color: white;
+            padding: 160px 0 120px;
+            margin-bottom: 0;
+            overflow: hidden;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -120px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: heroGlow 10s ease-in-out infinite reverse;
+        }
+        @keyframes heroGlow {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.25);
+                opacity: 1;
+            }
+        }
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .hero-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(201, 169, 110, 0.5);
+            border-radius: 50%;
+            animation: floatUp 6s ease-in infinite;
+        }
+        .hero-particle:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 7s;
+        }
+        .hero-particle:nth-child(2) {
+            left: 25%;
+            animation-delay: 1.2s;
+            animation-duration: 5.5s;
+        }
+        .hero-particle:nth-child(3) {
+            left: 40%;
+            animation-delay: 2.5s;
+            animation-duration: 8s;
+        }
+        .hero-particle:nth-child(4) {
+            left: 55%;
+            animation-delay: 0.8s;
+            animation-duration: 6.2s;
+        }
+        .hero-particle:nth-child(5) {
+            left: 70%;
+            animation-delay: 3s;
+            animation-duration: 7.5s;
+        }
+        .hero-particle:nth-child(6) {
+            left: 85%;
+            animation-delay: 1.8s;
+            animation-duration: 5.8s;
+        }
+        .hero-particle:nth-child(7) {
+            left: 15%;
+            animation-delay: 4s;
+            animation-duration: 9s;
+        }
+        .hero-particle:nth-child(8) {
+            left: 60%;
+            animation-delay: 2s;
+            animation-duration: 6.8s;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            60% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.8);
+                opacity: 0;
+            }
+        }
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            color: var(--accent-light);
+            backdrop-filter: blur(4px);
+        }
+        .hero-title {
+            font-family: 'Playfair Display', 'Noto Sans TC', serif;
+            font-size: clamp(2.6rem, 6vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+        }
+        .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--gold-gradient);
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        .hero-description {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 550px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+        }
+        .btn-hero {
+            display: inline-block;
+            padding: 14px 36px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border-radius: 50px;
+            background: var(--gold-gradient);
+            color: #1a1a2e;
+            border: none;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(201, 169, 110, 0.6);
+            color: #1a1a2e;
+        }
+        .btn-hero:active {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.5);
+        }
+        .btn-hero-outline {
+            display: inline-block;
+            padding: 14px 36px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border-radius: 50px;
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            margin-left: 12px;
+        }
+        .btn-hero-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #ffffff;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ── Section 通用 ── */
+        .section-padding {
+            padding: 90px 0;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', 'Noto Sans TC', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gold-gradient);
+            margin: 0 auto 20px;
+            border-radius: 10px;
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ── 服務卡片 ── */
+        .service-card-enhanced {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 40px 28px 32px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid transparent;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .service-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: var(--radius-lg);
+            background: var(--gold-gradient);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+        .service-card-enhanced:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(201, 169, 110, 0.3);
+        }
+        .service-card-enhanced:hover::before {
+            opacity: 0.03;
+        }
+        .service-icon-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(201, 169, 110, 0.12) 0%, rgba(201, 169, 110, 0.05) 100%);
+            margin-bottom: 22px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .service-icon-wrap .service-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+            transition: all 0.4s ease;
+        }
+        .service-card-enhanced:hover .service-icon-wrap {
+            background: var(--gold-gradient);
+            box-shadow: 0 10px 30px rgba(201, 169, 110, 0.4);
+            transform: scale(1.08);
+        }
+        .service-card-enhanced:hover .service-icon-wrap .service-icon {
+            color: #1a1a2e;
+        }
+        .service-card-enhanced .card-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+        .service-card-enhanced .card-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        .service-card-number {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgba(201, 169, 110, 0.08);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        /* ── 關於我們區塊 ── */
+        .about-section {
+            background: #ffffff;
+            position: relative;
+        }
+        .about-highlight-box {
+            background: #fafaf8;
+            border-radius: var(--radius-xl);
+            padding: 48px 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-subtle);
+        }
+        .about-highlight-box::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .about-stat {
+            text-align: center;
+            padding: 16px;
+        }
+        .about-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .about-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ── 聯絡區塊 ── */
+        .contact-section {
+            background: #fafaf8;
+        }
+        .contact-card {
+            background: #ffffff;
+            border-radius: var(--radius-xl);
+            padding: 50px 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .contact-info-tile {
+            display: block;
+            background: #fafaf8;
+            border-radius: var(--radius-md);
+            padding: 24px 18px;
+            text-align: center;
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 2px solid transparent;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-info-tile:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-6px);
+            background: #ffffff;
+        }
+        .contact-info-tile .tile-icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            transition: transform 0.35s ease;
+        }
+        .contact-info-tile:hover .tile-icon {
+            transform: scale(1.2);
+        }
+        .contact-info-tile .tile-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--primary);
+        }
+        .contact-info-tile .tile-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            word-break: break-all;
+        }
+
+        /* ── 社群按鈕 ── */
+        .btn-social-enhanced {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 24px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            font-size: 0.95rem;
+            gap: 8px;
+        }
+        .btn-fb {
+            background: #1877F2;
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.3);
+        }
+        .btn-fb:hover {
+            background: #125ec9;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(24, 119, 242, 0.45);
+        }
+        .btn-ig {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #ffffff;
+            border: none;
+            opacity: 0.55;
+            cursor: not-allowed;
+            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.2);
+            pointer-events: none;
+        }
+        .btn-ig .coming-soon-tag {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 2px 8px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Footer ── */
+        .footer-enhanced {
+            background: var(--dark-gradient);
+            color: rgba(255, 255, 255, 0.65);
+            padding: 32px 0;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .footer-enhanced .footer-brand {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        .footer-enhanced a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s;
+        }
+        .footer-enhanced a:hover {
+            color: var(--accent-light);
+        }
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 16px 0;
+        }
+
+        /* ── 回到頂部按鈕 ── */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            color: #1a1a2e;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(201, 169, 110, 0.5);
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(201, 169, 110, 0.7);
+        }
+
+        /* ── RWD 微調 ── */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 130px 0 80px;
+                min-height: 70vh;
+            }
+            .btn-hero-outline {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+            .contact-card {
+                padding: 30px 20px;
+            }
+            .about-highlight-box {
+                padding: 30px 20px;
+            }
+            .service-card-enhanced {
+                padding: 30px 20px 26px;
+            }
+            .navbar-custom .nav-link.btn-nav-cta {
+                margin-left: 0;
+                margin-top: 6px;
+                text-align: center;
+            }
+        }
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .about-stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-custom" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="accent-dot"></span>創藝製作
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">關於我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">服務項目</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">聯絡我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-nav-cta" href="https://www.art4u.com.hk/wordpress/" target="_blank">
+                            <i class="fas fa-globe me-1"></i>官方網站
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-center" id="home">
+        <!-- 粒子裝飾 -->
+        <div class="hero-particles">
+            <span class="hero-particle"></span>
+            <span class="hero-particle"></span>
+            <span class="hero-particle"></span>
+            <span class="hero-particle"></span>
+            <span class="hero-particle"></span>
+            <span class="hero-particle"></span>
+            <span class="hero-particle"></span>
+            <span class="hero-particle"></span>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
+            <span class="hero-badge">✦ 娛樂製作專家 ✦</span>
+            <h1 class="hero-title">Art Creative Production</h1>
+            <h2 class="hero-subtitle">創 藝 製 作</h2>
+            <div class="hero-divider"></div>
+            <p class="hero-description">
+                全面及現代化的娛樂製作公司，<br>匯聚龐大專業人才，締造非凡體驗。
+            </p>
+            <div>
+                <a href="https://www.art4u.com.hk/wordpress/" target="_blank" class="btn-hero">
+                    <i class="fas fa-globe me-2"></i>瀏覽官方網站
+                </a>
+                <a href="#contact" class="btn-hero-outline">
+                    <i class="fas fa-envelope me-2"></i>聯絡我們
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 關於我們 Section -->
+        <section class="about-section section-padding" id="about">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+                    <span class="section-label">About Us</span>
+                    <h3 class="section-title">公司簡介</h3>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="about-highlight-box" data-aos="fade-up" data-aos-duration="900" data-aos-delay="150">
+                            <div class="row align-items-center g-4">
+                                <div class="col-lg-7">
+                                    <p class="fs-5 lh-lg mb-0" style="color: #374151; letter-spacing: 0.2px;">
+                                        本公司為一間<strong style="color: #1a1a2e;">全面及現代化</strong>的娛樂製作公司，<br>
+                                        我們擁有<strong style="color: #1a1a2e;">龐大及專業</strong>的人材，<br>
+                                        致力為客戶提供<strong style="color: #c9a96e;">最優質的服務</strong>。
+                                    </p>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="row g-3">
+                                        <div class="col-6">
+                                            <div class="about-stat">
+                                                <div class="about-stat-number">10+</div>
+                                                <div class="about-stat-label">年行業經驗</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="about-stat">
+                                                <div class="about-stat-number">500+</div>
+                                                <div class="about-stat-label">成功活動案例</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="about-stat">
+                                                <div class="about-stat-number">100%</div>
+                                                <div class="about-stat-label">客戶滿意度</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="about-stat">
+                                                <div class="about-stat-number">24/7</div>
+                                                <div class="about-stat-label">專業支援服務</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服務項目 Section -->
+        <section class="section-padding" id="services" style="background: #fafaf8;">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+                    <span class="section-label">Our Services</span>
+                    <h3 class="section-title">服務項目</h3>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">我們提供多元化的娛樂製作服務，滿足不同場合的需求</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0">
+                        <div class="service-card-enhanced">
+                            <span class="service-card-number">01</span>
+                            <div class="service-icon-wrap">
+                                <i class="fas fa-mask service-icon"></i>
+                            </div>
+                            <h5 class="card-title">傳統民間手工藝</h5>
+                            <p class="card-text">承傳文化精髓，展現傳統技藝的獨特魅力，為活動增添濃厚文化底蘊。</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                        <div class="service-card-enhanced">
+                            <span class="service-card-number">02</span>
+                            <div class="service-icon-wrap">
+                                <i class="fas fa-utensils service-icon"></i>
+                            </div>
+                            <h5 class="card-title">民間小食</h5>
+                            <p class="card-text">提供各式懷舊及特色民間風味小食攤位，讓賓客享受地道美食體驗。</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                        <div class="service-card-enhanced">
+                            <span class="service-card-number">03</span>
+                            <div class="service-icon-wrap">
+                                <i class="fas fa-paint-brush service-icon"></i>
+                            </div>
+                            <h5 class="card-title">創意工作坊</h5>
+                            <p class="card-text">多元化的創意手作教學，適合各類活動與派對，激發無限創意樂趣。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 聯絡我們 Section -->
+        <section class="contact-section section-padding" id="contact">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up" data-aos-duration="800">
+                    <span class="section-label">Contact Us</span>
+                    <h3 class="section-title">聯絡我們</h3>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">如有任何查詢，歡迎隨時聯絡 <strong>Winnie 周小姐</strong></p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <div class="contact-card" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100">
+                            <!-- 聯絡資訊卡片 -->
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-4 col-sm-6">
+                                    <a href="tel:97580034" class="contact-info-tile">
+                                        <div class="tile-icon"><i class="fas fa-phone-alt"></i></div>
+                                        <div class="tile-title">致電查詢</div>
+                                        <div class="tile-subtitle">9758 0034</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <a href="mailto:winnie@art4u.com.hk" class="contact-info-tile">
+                                        <div class="tile-icon"><i class="fas fa-envelope"></i></div>
+                                        <div class="tile-title">電郵查詢</div>
+                                        <div class="tile-subtitle">winnie@art4u.com.hk</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 col-sm-12">
+                                    <a href="https://www.art4u.com.hk/wordpress/" target="_blank" class="contact-info-tile">
+                                        <div class="tile-icon"><i class="fas fa-globe"></i></div>
+                                        <div class="tile-title">官方網站</div>
+                                        <div class="tile-subtitle">點擊瀏覽更多資訊</div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 社群媒體 -->
+                            <div class="text-center mt-4 pt-3">
+                                <h6 class="fw-bold mb-3" style="color: #1a1a2e; letter-spacing: 1px;">
+                                    <i class="fas fa-share-alt me-2" style="color: #c9a96e;"></i>關注我們
+                                </h6>
+                                <div class="row justify-content-center g-3">
+                                    <div class="col-md-5 col-sm-6">
+                                        <a href="https://www.facebook.com/profile.php?id=100069277969471" target="_blank" class="btn-social-enhanced btn-fb">
+                                            <i class="fab fa-facebook-f"></i> Facebook 專頁
+                                        </a>
+                                    </div>
+                                    <div class="col-md-5 col-sm-6">
+                                        <button class="btn-social-enhanced btn-ig" disabled>
+                                            <i class="fab fa-instagram"></i> Instagram
+                                            <span class="coming-soon-tag">即將推出</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-enhanced text-center">
+        <div class="container">
+            <p class="footer-brand mb-2">
+                <span class="accent-dot" style="display:inline-block;width:7px;height:7px;background:#c9a96e;border-radius:50%;margin-right:5px;vertical-align:middle;"></span>
+                Art Creative Production 創藝製作
+            </p>
+            <p class="mb-0" style="font-size:0.82rem;">全面及現代化的娛樂製作專家</p>
+            <div class="footer-divider"></div>
+            <p class="mb-0" style="font-size:0.78rem;">&copy; 2026 Art Creative Production 創藝製作. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 回到頂部按鈕 -->
+    <button class="back-to-top" id="backToTopBtn" aria-label="回到頂部">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
+
+    <script>
+        // 初始化 AOS 動畫
+        AOS.init({
+            once: true,
+            offset: 80,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // 導航欄捲動效果
+        const navbar = document.getElementById('mainNavbar');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        function handleScroll() {
+            // 導航欄背景切換
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // 回到頂部按鈕顯示/隱藏
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        // 回到頂部按鈕點擊
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑捲動導航連結
+        document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = navbar.offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY -
+                        navbarHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    // 關閉手機選單
+                    const navbarCollapse = document.getElementById('navbarContent');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) bsCollapse.hide();
+                    }
+                }
+            });
+        });
+
+        // 頁面載入時檢查一次捲軸狀態
+        handleScroll();
+    </script>
+</body>
+</html>
