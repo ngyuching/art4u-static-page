@@ -2,253 +2,792 @@
 <html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>創藝製作 | Art Creative Production</title>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts: Noto Sans TC for Traditional Chinese -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>創藝製作｜Art Creative Production</title>
+
+    <meta
+        name="description"
+        content="創藝製作是一間全面及現代化的娛樂製作公司，提供傳統民間手工藝、特色小食及創意工作坊等服務。"
+    >
+    <meta
+        name="keywords"
+        content="創藝製作, Art Creative Production, 傳統手工藝, 民間小食, 創意工作坊, 香港活動製作"
+    >
+    <meta name="author" content="Art Creative Production 創藝製作">
+    <meta name="theme-color" content="#17324d">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="創藝製作｜Art Creative Production">
+    <meta
+        property="og:description"
+        content="全面及現代化的娛樂製作專家，提供傳統民間手工藝、特色小食及創意工作坊。"
+    >
+    <meta property="og:locale" content="zh_HK">
+    <meta property="og:url" content="https://www.art4u.com.hk/wordpress/">
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
+        :root {
+            --color-primary: #17324d;
+            --color-secondary: #3d8f9d;
+            --color-accent: #63bdc6;
+            --color-background: #f4f7f9;
+            --color-surface: #ffffff;
+            --color-text: #24313d;
+            --color-muted: #657482;
+            --color-border: #dfe7ec;
+            --shadow-sm: 0 8px 24px rgba(23, 50, 77, 0.07);
+            --shadow-md: 0 16px 40px rgba(23, 50, 77, 0.12);
+            --radius-md: 18px;
+            --radius-lg: 28px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
         body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
+            min-height: 100vh;
+            margin: 0;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, #2c3e50, #4ca1af);
-            color: white;
-            padding: 80px 0;
-            margin-bottom: 40px;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            position: relative;
-            margin-bottom: 30px;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #4ca1af;
-            margin: 10px auto;
-        }
-
-        .service-card {
-            border: none;
-            border-radius: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            background: white;
-            padding: 20px;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            color: #4ca1af;
-            margin-bottom: 15px;
-        }
-
-        .contact-box {
-            background-color: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .btn-social {
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 12px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s;
-        }
-
-        .btn-facebook {
-            background-color: #1877F2;
-            color: white;
-            border: none;
-        }
-        .btn-facebook:hover {
-            background-color: #115dc7;
-            color: white;
-        }
-
-        .btn-instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-            border: none;
-            opacity: 0.7; /* Dimmed because it's coming soon */
-        }
-
-        .btn-website {
-            transition: transform 0.2s;
-        }
-        .btn-website:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
-            margin-top: auto;
-            background-color: #2c3e50;
-            color: rgba(255,255,255,0.7);
-            padding: 20px 0;
-            font-size: 0.9rem;
+            overflow-x: hidden;
+            font-family: "Noto Sans TC", sans-serif;
+            color: var(--color-text);
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(99, 189, 198, 0.08),
+                    transparent 32rem
+                ),
+                var(--color-background);
         }
 
         a {
             text-decoration: none;
         }
+
+        .skip-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 9999;
+            padding: 10px 18px;
+            color: #fff;
+            background: var(--color-primary);
+            border-radius: 8px;
+            transform: translateY(-150%);
+            transition: transform 0.2s ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .brand {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+        }
+
+        .brand:hover,
+        .brand:focus {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: #fff;
+        }
+
+        .hero-section {
+            position: relative;
+            isolation: isolate;
+            min-height: 580px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            color: #fff;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(18, 43, 67, 0.98),
+                    rgba(46, 126, 139, 0.92)
+                );
+            border-radius: 0 0 36px 36px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-section::before,
+        .hero-section::after {
+            position: absolute;
+            z-index: -1;
+            content: "";
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .hero-section::before {
+            top: -180px;
+            right: -120px;
+            width: 460px;
+            height: 460px;
+        }
+
+        .hero-section::after {
+            bottom: -230px;
+            left: -120px;
+            width: 500px;
+            height: 500px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin-inline: auto;
+            padding: 150px 12px 100px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 7px 15px;
+            color: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-title {
+            margin-bottom: 10px;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+        }
+
+        .hero-title-zh {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: clamp(1.5rem, 4vw, 2.35rem);
+            font-weight: 400;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            margin: 0 auto 32px;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            line-height: 1.8;
+        }
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 54px;
+            padding: 12px 26px;
+            color: var(--color-primary);
+            background: #fff;
+            border: 2px solid #fff;
+            border-radius: 999px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+            font-weight: 700;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background-color 0.2s ease;
+        }
+
+        .btn-main:hover {
+            color: var(--color-primary);
+            background: #f3fbfc;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .content-section {
+            padding: 88px 0;
+        }
+
+        .content-section + .content-section {
+            padding-top: 20px;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+        .section-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--color-secondary);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin-bottom: 16px;
+            color: var(--color-primary);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+        }
+
+        .section-title::after {
+            display: block;
+            width: 54px;
+            height: 4px;
+            margin: 16px auto 0;
+            content: "";
+            background: linear-gradient(
+                90deg,
+                var(--color-secondary),
+                var(--color-accent)
+            );
+            border-radius: 999px;
+        }
+
+        .section-description {
+            margin: 0;
+            color: var(--color-muted);
+            font-size: 1.08rem;
+            line-height: 2;
+        }
+
+        .service-card {
+            height: 100%;
+            padding: 34px 28px;
+            background: var(--color-surface);
+            border: 1px solid rgba(223, 231, 236, 0.8);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(61, 143, 157, 0.3);
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 22px;
+            display: grid;
+            place-items: center;
+            color: var(--color-secondary);
+            background: linear-gradient(
+                145deg,
+                rgba(61, 143, 157, 0.12),
+                rgba(99, 189, 198, 0.2)
+            );
+            border-radius: 20px;
+            font-size: 1.9rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            margin: 0;
+            color: var(--color-muted);
+            line-height: 1.75;
+        }
+
+        .contact-box {
+            overflow: hidden;
+            padding: clamp(28px, 6vw, 56px);
+            background: var(--color-surface);
+            border: 1px solid rgba(223, 231, 236, 0.85);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-item {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+            padding: 24px 16px;
+            color: var(--color-text);
+            background: #f7fafb;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background-color 0.2s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--color-text);
+            background: #fff;
+            border-color: rgba(61, 143, 157, 0.55);
+            transform: translateY(-4px);
+        }
+
+        .contact-item-icon {
+            margin-bottom: 12px;
+            color: var(--color-secondary);
+            font-size: 1.55rem;
+        }
+
+        .contact-item strong {
+            margin-bottom: 5px;
+            color: var(--color-primary);
+            font-size: 1.05rem;
+        }
+
+        .contact-item small {
+            color: var(--color-muted);
+            overflow-wrap: anywhere;
+        }
+
+        .social-title {
+            margin: 42px 0 18px;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .social-button {
+            width: 100%;
+            min-height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 11px 20px;
+            color: #fff;
+            border: 0;
+            border-radius: 999px;
+            font-weight: 700;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .social-button:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .facebook-button {
+            background: #1877f2;
+            box-shadow: 0 8px 20px rgba(24, 119, 242, 0.2);
+        }
+
+        .facebook-button:hover {
+            background: #1267d3;
+            box-shadow: 0 11px 25px rgba(24, 119, 242, 0.28);
+        }
+
+        .instagram-button {
+            color: rgba(255, 255, 255, 0.9);
+            background:
+                linear-gradient(
+                    45deg,
+                    #f09433,
+                    #e6683c 25%,
+                    #dc2743 50%,
+                    #cc2366 75%,
+                    #bc1888
+                );
+            cursor: not-allowed;
+            opacity: 0.62;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 28px 0;
+            color: rgba(255, 255, 255, 0.72);
+            background: var(--color-primary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            color: var(--color-accent);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #ffd166;
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 767.98px) {
+            .site-nav {
+                padding: 17px 0;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links .optional-link {
+                display: none;
+            }
+
+            .hero-section {
+                min-height: 540px;
+                border-radius: 0 0 24px 24px;
+            }
+
+            .hero-content {
+                padding-top: 130px;
+                padding-bottom: 80px;
+            }
+
+            .content-section {
+                padding: 68px 0;
+            }
+
+            .contact-box {
+                border-radius: 20px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .brand {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 0.9rem;
+            }
+
+            .hero-title {
+                font-size: 2.35rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
     </style>
 </head>
-<body>
 
-    <!-- Header / Hero Section -->
-    <header class="hero-section text-center">
+<body>
+    <a class="skip-link" href="#main-content">跳至主要內容</a>
+
+    <header class="hero-section" id="home">
+        <nav class="site-nav" aria-label="主要導覽">
+            <div class="container d-flex align-items-center justify-content-between">
+                <a class="brand" href="#home" aria-label="創藝製作首頁">
+                    創藝製作
+                </a>
+
+                <ul class="nav-links">
+                    <li>
+                        <a href="#about">公司簡介</a>
+                    </li>
+                    <li class="optional-link">
+                        <a href="#services">服務範疇</a>
+                    </li>
+                    <li>
+                        <a href="#contact">聯絡我們</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
         <div class="container">
-            <h1 class="display-4 fw-bold mb-2">Art Creative Production</h1>
-            <h2 class="h3 fw-light">創藝製作</h2>
-            <p class="lead mt-3">全面及現代化的娛樂製作專家</p>
-            
-            <!-- 加入網站按鈕 -->
-            <div class="mt-4">
-                <a href="https://www.art4u.com.hk/wordpress/" target="_blank" class="btn btn-light btn-lg rounded-pill fw-bold text-dark px-4 shadow-sm btn-website">
-                    <i class="fas fa-globe me-2"></i>瀏覽官方網站
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    專業娛樂及活動製作
+                </div>
+
+                <h1 class="hero-title">Art Creative Production</h1>
+                <p class="hero-title-zh">創藝製作</p>
+
+                <p class="hero-description">
+                    以創意連繫傳統與現代，為不同活動提供專業、靈活及多元化的製作服務。
+                </p>
+
+                <a
+                    class="btn-main"
+                    href="https://www.art4u.com.hk/wordpress/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="在新視窗瀏覽創藝製作官方網站"
+                >
+                    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    瀏覽官方網站
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="container mb-5">
-        <div class="row justify-content-center">
-            
-            <!-- About Section -->
-            <div class="col-lg-10 mb-5 text-center">
-                <h3 class="section-title">公司簡介</h3>
-                <p class="fs-5 lh-lg text-secondary">
-                    本公司為一間全面及現代化的娛樂製作公司，<br>
-                    我們擁有龐大及專業的人材，致力為客戶提供最優質的服務。
-                </p>
+    <main id="main-content">
+        <section class="content-section" id="about" aria-labelledby="about-title">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-label">About Us</span>
+                    <h2 class="section-title" id="about-title">公司簡介</h2>
+                    <p class="section-description">
+                        本公司是一間全面及現代化的娛樂製作公司。
+                        我們擁有龐大而專業的人才團隊，致力以豐富經驗及創意思維，
+                        為每位客戶提供優質、可靠及切合需要的服務。
+                    </p>
+                </div>
             </div>
+        </section>
 
-            <!-- Services Section -->
-            <div class="col-lg-12 mb-5">
-                <div class="row g-4 text-center">
-                    <div class="col-md-4">
-                        <div class="card service-card">
-                            <div class="card-body">
-                                <div class="service-icon"><i class="fas fa-mask"></i></div>
-                                <h5 class="card-title fw-bold">傳統民間手工藝</h5>
-                                <p class="card-text text-muted">承傳文化精髓，展現傳統技藝的獨特魅力。</p>
+        <section
+            class="content-section"
+            id="services"
+            aria-labelledby="services-title"
+        >
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-label">Our Services</span>
+                    <h2 class="section-title" id="services-title">服務範疇</h2>
+                    <p class="section-description">
+                        為商場、學校、機構、私人派對及不同類型活動提供多元化體驗。
+                    </p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <article class="service-card">
+                            <div class="service-icon" aria-hidden="true">
+                                <i class="fa-solid fa-masks-theater"></i>
                             </div>
-                        </div>
+                            <h3>傳統民間手工藝</h3>
+                            <p>
+                                承傳文化精髓，透過互動示範及體驗活動，
+                                展現傳統技藝的獨特魅力。
+                            </p>
+                        </article>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card service-card">
-                            <div class="card-body">
-                                <div class="service-icon"><i class="fas fa-utensils"></i></div>
-                                <h5 class="card-title fw-bold">民間小食</h5>
-                                <p class="card-text text-muted">提供各式懷舊及特色民間風味小食攤位。</p>
+
+                    <div class="col-md-6 col-lg-4">
+                        <article class="service-card">
+                            <div class="service-icon" aria-hidden="true">
+                                <i class="fa-solid fa-utensils"></i>
                             </div>
-                        </div>
+                            <h3>民間小食</h3>
+                            <p>
+                                提供各式懷舊及特色民間風味小食攤位，
+                                為活動增添地道風味與熱鬧氣氛。
+                            </p>
+                        </article>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card service-card">
-                            <div class="card-body">
-                                <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-                                <h5 class="card-title fw-bold">創意工作坊</h5>
-                                <p class="card-text text-muted">多元化的創意手作教學，適合各類活動與派對。</p>
+
+                    <div class="col-md-6 col-lg-4 mx-md-auto">
+                        <article class="service-card">
+                            <div class="service-icon" aria-hidden="true">
+                                <i class="fa-solid fa-palette"></i>
                             </div>
-                        </div>
+                            <h3>創意工作坊</h3>
+                            <p>
+                                提供多元化創意手作教學及體驗，
+                                適合親子活動、企業活動與私人派對。
+                            </p>
+                        </article>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Contact Section -->
-            <div class="col-lg-8">
-                <div class="contact-box text-center">
-                    <h3 class="section-title">聯絡我們</h3>
-                    <p class="mb-4">如有任何查詢，歡迎隨時聯絡 Winnie 周小姐</p>
-                    
-                    <!-- 將原本的 2 欄 (col-md-6) 改為 3 欄 (col-md-4)，加入網站連結 -->
-                    <div class="row justify-content-center g-4 mb-4">
-                        <div class="col-md-4 col-sm-6">
-                            <a href="tel:97580034" class="text-decoration-none text-dark">
-                                <div class="p-3 border rounded bg-light h-100">
-                                    <i class="fas fa-phone-alt text-primary mb-2 fs-4"></i>
-                                    <h5 class="mb-0">9758 0034</h5>
-                                    <small class="text-muted">點擊撥打</small>
-                                </div>
+        <section
+            class="content-section"
+            id="contact"
+            aria-labelledby="contact-title"
+        >
+            <div class="container">
+                <div class="contact-box">
+                    <div class="section-heading">
+                        <span class="section-label">Contact Us</span>
+                        <h2 class="section-title" id="contact-title">聯絡我們</h2>
+                        <p class="section-description">
+                            如有任何查詢或合作邀請，歡迎聯絡 Winnie 周小姐。
+                        </p>
+                    </div>
+
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-sm-6 col-lg-4">
+                            <a
+                                class="contact-item"
+                                href="tel:+85297580034"
+                                aria-label="致電周小姐，電話 9758 0034"
+                            >
+                                <i
+                                    class="fa-solid fa-phone contact-item-icon"
+                                    aria-hidden="true"
+                                ></i>
+                                <strong>9758 0034</strong>
+                                <small>點擊撥打電話</small>
                             </a>
                         </div>
-                        <div class="col-md-4 col-sm-6">
-                            <a href="mailto:winnie@art4u.com.hk" class="text-decoration-none text-dark">
-                                <div class="p-3 border rounded bg-light h-100">
-                                    <i class="fas fa-envelope text-primary mb-2 fs-4"></i>
-                                    <h5 class="mb-0">電郵查詢</h5>
-                                    <small class="text-muted text-break">winnie@art4u.com.hk</small>
-                                </div>
+
+                        <div class="col-sm-6 col-lg-4">
+                            <a
+                                class="contact-item"
+                                href="mailto:winnie@art4u.com.hk"
+                                aria-label="電郵至 winnie@art4u.com.hk"
+                            >
+                                <i
+                                    class="fa-solid fa-envelope contact-item-icon"
+                                    aria-hidden="true"
+                                ></i>
+                                <strong>電郵查詢</strong>
+                                <small>winnie@art4u.com.hk</small>
                             </a>
                         </div>
-                        <div class="col-md-4 col-sm-12">
-                            <a href="https://www.art4u.com.hk/wordpress/" target="_blank" class="text-decoration-none text-dark">
-                                <div class="p-3 border rounded bg-light h-100">
-                                    <i class="fas fa-globe text-primary mb-2 fs-4"></i>
-                                    <h5 class="mb-0">官方網站</h5>
-                                    <small class="text-muted">點擊瀏覽</small>
-                                </div>
+
+                        <div class="col-sm-8 col-lg-4">
+                            <a
+                                class="contact-item"
+                                href="https://www.art4u.com.hk/wordpress/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="在新視窗瀏覽官方網站"
+                            >
+                                <i
+                                    class="fa-solid fa-globe contact-item-icon"
+                                    aria-hidden="true"
+                                ></i>
+                                <strong>官方網站</strong>
+                                <small>點擊瀏覽網站</small>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Social Media Links -->
-                    <h5 class="mb-3 mt-5">關注我們</h5>
-                    <div class="row justify-content-center">
-                        <div class="col-md-5 col-sm-6">
-                            <a href="https://www.facebook.com/profile.php?id=100069277969471" target="_blank" class="btn btn-social btn-facebook">
-                                <i class="fab fa-facebook-f me-2"></i> Facebook 專頁
+                    <h3 class="social-title text-center h5">關注我們</h3>
+
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-sm-6 col-md-5">
+                            <a
+                                class="social-button facebook-button"
+                                href="https://www.facebook.com/profile.php?id=100069277969471"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="在新視窗瀏覽創藝製作 Facebook 專頁"
+                            >
+                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                                Facebook 專頁
                             </a>
                         </div>
-                        <div class="col-md-5 col-sm-6">
-                            <button class="btn btn-social btn-instagram" disabled>
-                                <i class="fab fa-instagram me-2"></i> Instagram (Coming Soon)
+
+                        <div class="col-sm-6 col-md-5">
+                            <button
+                                class="social-button instagram-button"
+                                type="button"
+                                disabled
+                                aria-label="Instagram 專頁即將推出"
+                            >
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                                Instagram 即將推出
                             </button>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-        </div>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer class="text-center">
         <div class="container">
-            <p class="mb-0">&copy; 2026 Art Creative Production 創藝製作. All Rights Reserved.</p>
+            <p class="mb-1">
+                &copy; <span id="current-year">2026</span>
+                Art Creative Production 創藝製作
+            </p>
+            <p class="mb-0">All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
+    </script>
 </body>
 </html>
