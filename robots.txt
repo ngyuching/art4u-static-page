@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.art4u.com.hk/sitemap.xml
